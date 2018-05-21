@@ -1,0 +1,40 @@
+**/.gradle
+**/build
+**/bin
+**/wiki-pages-postput/runtime
+
+**/node_modules
+
+**/.settings
+
+# Ignore Gradle GUI config
+**/gradle-app.setting
+
+# Cache of project
+**/.gradletasknamecache
+
+# # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
+# gradle/wrapper/gradle-wrapper.properties
+
+# Compiled class file
+**.class
+
+# Log file
+**.log
+
+# BlueJ files
+**.ctxt
+
+# Package Files #
+**.jar
+**.war
+**.ear
+**.zip
+**.tar.gz
+**.rar
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*

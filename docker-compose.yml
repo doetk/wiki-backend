@@ -1,0 +1,61 @@
+version: '2'
+services:
+  wiki-pages-postput:
+    build: wiki-pages-postput
+    ports:
+      - "8181:8181"
+    depends_on:
+      - postgres
+  wiki-pages-get:
+    build: wiki-pages-get
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+  wiki-user:
+    build: wiki-user
+    ports:
+      - "4000:4000"
+    depends_on:
+      - postgres
+  wiki-api-gateway:
+    build: wiki-api-gateway
+    ports:
+      - "8080:8080"
+    depends_on:
+      - wiki-user
+      - wiki-pages-get
+      - wiki-pages-postput
+  postgres:
+    build: db
+    ports:
+      - "5432:5432"
+  es:
+    image: docker.elastic.co/elasticsearch/elasticsearch:6.1.1
+    environment:
+      - discovery.type=single-node
+      - "http.cors.enabled=true"
+      - "http.cors.allow-origin=*"
+    ports:
+      - "9200:9200"
+  logstash:
+    build: logstash
+    ports:
+      - "9600:9600"
+    depends_on:
+      - es
+      - postgres
+  neo4j:
+    image: neo4j:3.3
+    environment:
+      - "NEO4J_AUTH=neo4j/wikigraph"
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+  wiki-recommendation:
+    build: wiki-recommendation
+    ports:
+      - "6161:6161"
+    depends_on:
+      - neo4j
+

@@ -1,0 +1,24 @@
+{
+  "name": "wiki-user",
+  "version": "1.0.0",
+  "description": "Service providing user details, login, and token checking.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.16.2",
+    "express-promise-router": "^2.0.0",
+    "jsonwebtoken": "^8.1.0",
+    "log4js": "^2.3.12",
+    "moment": "^2.19.3",
+    "nodemailer": "^4.4.0",
+    "pg": "^7.4.0",
+    "request": "^2.85.0"
+  }
+}
